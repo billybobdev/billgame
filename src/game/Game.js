@@ -15,14 +15,14 @@ class Game {
 
     this.map = new Map(this.atlas);
 
-    requestAnimationFrame(this.mainLoop.bind(this));
+    this.mainLoop = this.mainLoop.bind(this);
   }
 
   mainLoop() {
 
     this.map.draw(this.context);
 
-    requestAnimationFrame(this.mainLoop.bind(this));
+    requestAnimationFrame(this.mainLoop);
   }
 
   resizeCanvas() {

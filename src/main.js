@@ -5,4 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const context = canvas.getContext('2d');
 
   const game = new Game(context);
+
+  requestAnimationFrame(game.mainLoop);
 });
