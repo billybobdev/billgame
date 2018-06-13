@@ -19,7 +19,6 @@ class Game {
   }
 
   mainLoop() {
-
     this.map.draw(this.context);
 
     requestAnimationFrame(this.mainLoop);

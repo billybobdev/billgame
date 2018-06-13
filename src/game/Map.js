@@ -7,7 +7,7 @@ class Map {
 
     for (let y = 0; y < 30; y++) {
       this.map.push([
-        'tileGrass1', 'tileGrass_roadCornerLL','tileGrass_roadCornerLR','tileGrass_roadCornerUL','tileGrass_roadCornerUR','tileGrass_roadCrossing','tileGrass_roadCrossingRound','tileGrass1','tileGrass1','tileGrass1',
+        'tileGrass1', 'tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1',
         'tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1',
         'tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1',
         'tileGrass1', 'tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1',

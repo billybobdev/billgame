@@ -1,7 +1,6 @@
 class Input {
 
   constructor() {
-    console.log('Initialize input');
     const body = document.querySelector('body');
 
     this.keyState = {};
