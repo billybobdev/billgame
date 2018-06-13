@@ -11,7 +11,7 @@ class Game {
     window.addEventListener('resize', this.resizeCanvas.bind(this), false);
     this.resizeCanvas();
 
-    this.atlas = new TextureAtlas(require('./assets/allSprites_default.xml'), require('./assets/allSprites_default.png'));
+    this.atlas = new TextureAtlas(this.context, require('./assets/allSprites_default.xml'), require('./assets/allSprites_default.png'));
 
     this.map = new Map(this.atlas);
 
@@ -19,7 +19,7 @@ class Game {
   }
 
   mainLoop() {
-    this.map.draw(this.context);
+    this.map.draw();
 
     requestAnimationFrame(this.mainLoop);
   }

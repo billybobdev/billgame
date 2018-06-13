@@ -2,7 +2,9 @@ import path from 'path';
 
 class TextureAtlas {
 
-  constructor(xmlString, imgData) {
+  constructor(context, xmlString, imgData) {
+
+    this.context = context;
 
     this.atlas = {};
 
@@ -27,8 +29,8 @@ class TextureAtlas {
     this.texture.src = imgData;
   }
 
-  drawImage(context, sprite, x, y) {
-    context.drawImage(this.texture, this.atlas[sprite].x, this.atlas[sprite].y, this.atlas[sprite].width, this.atlas[sprite].height, x, y, this.atlas[sprite].width, this.atlas[sprite].height);
+  drawImage(sprite, x, y) {
+    this.context.drawImage(this.texture, this.atlas[sprite].x, this.atlas[sprite].y, this.atlas[sprite].width, this.atlas[sprite].height, x, y, this.atlas[sprite].width, this.atlas[sprite].height);
   }
 }
 

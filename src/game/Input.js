@@ -20,7 +20,6 @@ class Input {
       case 'keydown':
         this.keyState[event.code] = true;
         break;
-
       case 'keyup':
         this.keyState[event.code] = false;
         break;

@@ -20,8 +20,8 @@ class Map {
   draw(ctx) {
     let x = 0, y = 0;
     this.map.forEach(row => {
-      row.forEach(col => {
-        this.atlas.drawImage(ctx, col, x, y);
+      row.forEach(sprite => {
+        this.atlas.drawImage(sprite, x, y);
         x += 64;
       });
       x = 0;
