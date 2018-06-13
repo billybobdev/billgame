@@ -4,14 +4,12 @@ import Map from './Map';
 
 class Game {
 
-  constructor(selector) {
-
-    this.canvas = document.querySelector(selector);
+  constructor(context) {
+    this.context = context;
+    this.canvas = context.canvas;
 
     window.addEventListener('resize', this.resizeCanvas.bind(this), false);
     this.resizeCanvas();
-
-    this.context = this.canvas.getContext('2d');
 
     this.atlas = new TextureAtlas(require('./assets/allSprites_default.xml'), require('./assets/allSprites_default.png'));
 
