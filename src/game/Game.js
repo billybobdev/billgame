@@ -1,6 +1,7 @@
 import Input from './Input';
 import TextureAtlas from './TextureAtlas';
 import Map from './Map';
+import Tank from './Tank';
 
 class Game {
 
@@ -15,11 +16,18 @@ class Game {
 
     this.map = new Map(this.atlas);
 
+    this.tank = new Tank(this.atlas);
+
     this.mainLoop = this.mainLoop.bind(this);
   }
 
   mainLoop() {
+
+    this.tank.update();
+
     this.map.draw();
+
+    this.tank.draw();
 
     requestAnimationFrame(this.mainLoop);
   }

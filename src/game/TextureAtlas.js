@@ -10,8 +10,7 @@ class TextureAtlas {
 
     const doc = new DOMParser().parseFromString(xmlString, 'text/xml');
 
-
-    var textures = doc.getElementsByTagName('SubTexture');
+    const textures = doc.getElementsByTagName('SubTexture');
 
     for (let i = 0; i < textures.length; i++) {
       let name = textures[i].getAttribute('name');
@@ -27,6 +26,10 @@ class TextureAtlas {
 
     this.texture = new Image();
     this.texture.src = imgData;
+  }
+
+  get Atlas() {
+    return this.atlas;
   }
 
   drawImage(sprite, x, y) {
