@@ -17,33 +17,38 @@ class Tank {
   }
 
   begin(timestamp, delta) {
-    if (Input.KeyDown('KeyA')) {
+    if (Input.IsDown('KeyA')) {
       this.orientation -= this.turnSpeed * delta;
       this.turretAngle -= this.turnSpeed * delta;
     }
 
-    if (Input.KeyDown('KeyD')){
+    if (Input.IsDown('KeyD')){
       this.orientation += this.turnSpeed * delta;
       this.turretAngle += this.turnSpeed * delta;
     }
 
-    if (Input.KeyDown('KeyW')) {
+    if (Input.IsDown('KeyW')) {
       this.x += this.moveSpeed * Math.cos(this.orientation * Math.PI / 180) * delta;
       this.y += this.moveSpeed * Math.sin(this.orientation * Math.PI / 180) * delta;
     }
 
-    if (Input.KeyDown('KeyS')) {
+    if (Input.IsDown('KeyS')) {
       this.x -= this.moveSpeed * Math.cos(this.orientation * Math.PI / 180) * delta;
       this.y -= this.moveSpeed * Math.sin(this.orientation * Math.PI / 180) * delta;
     }
 
-    if (Input.KeyDown('ArrowRight')) {
+    if (Input.IsDown('ArrowRight')) {
       this.turretAngle += this.turnSpeed * delta;
     }
 
-    if (Input.KeyDown('ArrowLeft')) {
+    if (Input.IsDown('ArrowLeft')) {
       this.turretAngle -= this.turnSpeed * delta;
     }
+
+    var dx = (Input.mouseState.x - this.x);
+    var dy = (Input.mouseState.y - this.y);
+
+    this.turretAngle = Math.atan2(dy, dx) * 180 / Math.PI + 90;
   }
 
   update(delta) {
