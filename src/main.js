@@ -6,5 +6,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const game = new Game(context);
 
-  requestAnimationFrame(game.mainLoop);
+  game.mainLoop.start();
 });

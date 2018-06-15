@@ -1,3 +1,4 @@
+import MainLoop from 'mainloop.js';
 import Input from './Input';
 import TextureAtlas from './TextureAtlas';
 import Map from './Map';
@@ -18,18 +19,29 @@ class Game {
 
     this.tank = new Tank(this.atlas);
 
-    this.mainLoop = this.mainLoop.bind(this);
+    this.mainLoop = MainLoop;
+
+    MainLoop
+      .setBegin(this.begin.bind(this))
+      .setUpdate(this.update.bind(this))
+      .setDraw(this.draw.bind(this))
+      .setEnd(this.end.bind(this));
   }
 
-  mainLoop() {
+  begin(timestamp, delta) {
 
-    this.tank.update();
+  }
 
+  update(delta) {
+    this.tank.update(delta);
+  }
+
+  draw() {
     this.map.draw();
-
     this.tank.draw();
+  }
 
-    requestAnimationFrame(this.mainLoop);
+  end(fps, panic) {
   }
 
   resizeCanvas() {
