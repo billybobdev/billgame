@@ -10,6 +10,8 @@ class Game {
     this.context = context;
     this.canvas = context.canvas;
 
+    this.testMode = false;
+
     window.addEventListener('resize', this.resizeCanvas.bind(this), false);
     this.resizeCanvas();
 
@@ -29,16 +31,32 @@ class Game {
   }
 
   begin(timestamp, delta) {
+    this.tank.begin(timestamp, delta);
 
+    if (Input.IsPressed('F1')) {
+      this.testMode = !this.testMode;
+    }
+
+    Input.begin(timestamp, delta);
   }
 
   update(delta) {
-    this.tank.update(delta);
+
+    if (!this.testMode) {
+      this.tank.update(delta);
+    }
   }
 
   draw() {
     this.map.draw();
-    this.tank.draw();
+
+    if (!this.testMode) {
+      this.tank.draw();
+    } else {
+      this.context.font = '40px serif';
+      this.context.fillText('Test Mode', this.canvas.width / 2, 60);
+    }
+
   }
 
   end(fps, panic) {
