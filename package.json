@@ -6,10 +6,12 @@
     "dev": "webpack-dev-server --mode=development",
     "build": "webpack --mode=production"
   },
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "mainloop.js": "^1.0.4"
+  },
   "devDependencies": {
     "html-webpack-plugin": "^3.2.0",
-    "lodash": "^4.17.10",
-    "mainloop.js": "^1.0.4",
     "raw-loader": "^0.5.1",
     "url-loader": "^1.0.1",
     "webpack": "^4.12.0",
