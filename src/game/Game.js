@@ -1,4 +1,5 @@
 import MainLoop from 'mainloop.js';
+import { Point } from './Primatives';
 import Input from './Input';
 import TextureAtlas from './TextureAtlas';
 import Map from './Map';
@@ -41,7 +42,6 @@ class Game {
   }
 
   update(delta) {
-
     if (!this.testMode) {
       this.tank.update(delta);
     }
@@ -55,8 +55,21 @@ class Game {
     } else {
       this.context.font = '40px serif';
       this.context.fillText('Test Mode', this.canvas.width / 2, 60);
-    }
 
+      this.context.drawImage(this.atlas.texture, 0, 0);
+
+      this.context.font = '16px serif';
+
+      const spriteName = this.atlas.findSpriteByPoint(new Point(Input.MouseState.x, Input.MouseState.y));
+
+      if (spriteName) {
+        const texture = this.atlas.Atlas[spriteName];
+
+        this.context.strokeRect(texture.x, texture.y, texture.width, texture.height);
+
+        this.context.fillText('"' + spriteName + '" ' + texture.x + ',' + texture.y + ' ' + texture.width + 'x' + texture.height, this.atlas.texture.width + 20, 20);
+      }
+    }
   }
 
   end(fps, panic) {

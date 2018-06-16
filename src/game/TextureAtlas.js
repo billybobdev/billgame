@@ -1,4 +1,6 @@
 import path from 'path';
+import { Rectangle } from './Primatives';
+import { forOwn } from 'lodash';
 
 class TextureAtlas {
 
@@ -16,12 +18,10 @@ class TextureAtlas {
       let name = textures[i].getAttribute('name');
       name = path.basename(name, path.extname(name));
 
-      this.atlas[name] = {
-        x: textures[i].getAttribute('x'),
-        y: textures[i].getAttribute('y'),
-        width: textures[i].getAttribute('width'),
-        height: textures[i].getAttribute('height')
-      };
+      this.atlas[name] = new Rectangle(
+        textures[i].getAttribute('x'), textures[i].getAttribute('y'),
+        textures[i].getAttribute('width'), textures[i].getAttribute('height')
+      );
     }
 
     this.texture = new Image();
@@ -30,6 +30,18 @@ class TextureAtlas {
 
   get Atlas() {
     return this.atlas;
+  }
+
+  findSpriteByPoint(point) {
+    let found;
+
+    forOwn(this.atlas, (value, key) => {
+      if (value.contains(point)) {
+        found = key;
+      }
+    });
+
+    return found;
   }
 
   drawImage(sprite, x, y) {
