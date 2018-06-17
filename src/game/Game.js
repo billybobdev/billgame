@@ -48,6 +48,9 @@ class Game {
   }
 
   draw() {
+
+    this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
+
     this.map.draw();
 
     if (!this.testMode) {

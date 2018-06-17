@@ -1,25 +1,16 @@
 class Map {
+
   constructor(atlas) {
     this.atlas = atlas;
 
+    const map = require('./assets/map1.json');
 
-    this.map = [];
-
-    for (let y = 0; y < 30; y++) {
-      this.map.push([
-        'tileGrass1', 'tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1',
-        'tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1',
-        'tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1',
-        'tileGrass1', 'tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1',
-        'tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1',
-        'tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1','tileGrass1',
-      ])
-    }
+    this.tiles = map.tiles;
   }
 
-  draw(ctx) {
+  draw() {
     let x = 0, y = 0;
-    this.map.forEach(row => {
+    this.tiles.forEach(row => {
       row.forEach(sprite => {
         this.atlas.drawImage(sprite, x, y);
         x += 64;

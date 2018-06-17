@@ -1,0 +1,7 @@
+{
+  "tiles": [
+    ["tileGrass1", "tileGrass2", "tileGrass_roadNorth", "tileGrass2", "tileGrass_roadCornerLR"],
+    ["tileGrass2", "tileGrass1", "tileGrass_roadNorth", "tileGrass1", "tileGrass_roadNorth"],
+    ["tileGrass_roadEast", "tileGrass_roadEast", "tileGrass_roadCrossingRound", "tileGrass_roadEast", "tileGrass_roadCornerUL"]
+  ]
+}
