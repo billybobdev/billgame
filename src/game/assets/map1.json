@@ -1,7 +1,13 @@
 {
   "tiles": [
-    ["tileGrass1", "tileGrass2", "tileGrass_roadNorth", "tileGrass2", "tileGrass_roadCornerLR"],
-    ["tileGrass2", "tileGrass1", "tileGrass_roadNorth", "tileGrass1", "tileGrass_roadNorth"],
-    ["tileGrass_roadEast", "tileGrass_roadEast", "tileGrass_roadCrossingRound", "tileGrass_roadEast", "tileGrass_roadCornerUL"]
+    ["tileGrass1", "tileGrass2", "tileGrass_roadNorth", "tileGrass2", "tileGrass_roadCornerLR", "tileGrass_roadEast", "tileGrass_roadTransitionE", "tileSand_roadSplitS", "tileSand_roadEast", "tileSand_roadEast", "tileSand_roadEast", "tileSand_roadEast", "tileSand_roadCornerLL", "tileSand1", "tileSand2"],
+    ["tileGrass2", "tileGrass1", "tileGrass_roadNorth", "tileGrass1", "tileGrass_roadNorth", "tileGrass2", "tileGrass_transitionE", "tileSand_roadNorth", "tileSand2", "tileSand1", "tileSand2", "tileSand1", "tileSand_roadNorth", "tileSand1", "tileSand2"],
+    ["tileGrass_roadEast", "tileGrass_roadEast", "tileGrass_roadCrossingRound", "tileGrass_roadEast", "tileGrass_roadCornerUL", "tileGrass1", "tileGrass_transitionE", "tileSand_roadCornerUR", "tileSand_roadCornerLL", "tileSand1", "tileSand2", "tileSand1", "tileSand_roadNorth", "tileSand1", "tileSand2"],
+    ["tileGrass1", "tileGrass2", "tileGrass_roadNorth", "tileGrass2", "tileGrass1", "tileGrass2", "tileGrass_transitionE", "tileSand2", "tileSand_roadNorth", "tileSand1", "tileSand2", "tileSand1", "tileSand_roadNorth", "tileSand1", "tileSand2"],
+    ["tileGrass2", "tileGrass1", "tileGrass_roadCornerUR", "tileGrass_roadSplitS", "tileGrass_roadEast", "tileGrass_roadEast", "tileGrass_roadTransitionE", "tileSand_roadEast", "tileSand_roadCrossing", "tileSand_roadEast", "tileSand_roadEast", "tileSand_roadCornerLL", "tileSand_roadNorth", "tileSand1", "tileSand2"],
+    ["tileGrass1", "tileGrass2", "tileGrass1", "tileGrass_roadNorth", "tileGrass1", "tileGrass2", "tileGrass_transitionE", "tileSand1", "tileSand_roadNorth", "tileSand1", "tileSand2", "tileSand_roadNorth", "tileSand_roadNorth", "tileSand1", "tileSand2"],
+    ["tileGrass1", "tileGrass2", "tileGrass1", "tileGrass_roadNorth", "tileGrass2", "tileGrass1", "tileGrass_transitionE", "tileSand2", "tileSand_roadNorth", "tileSand2", "tileSand1", "tileSand_roadCornerUR", "tileSand_roadCrossing", "tileSand_roadEast", "tileSand_roadEast"],
+    ["tileGrass_roadEast", "tileGrass_roadEast", "tileGrass_roadEast", "tileGrass_roadCornerUL", "tileGrass1", "tileGrass2", "tileGrass_transitionE", "tileSand1", "tileSand_roadNorth", "tileSand2", "tileSand1", "tileSand2", "tileSand_roadNorth", "tileSand1", "tileSand2"],
+    ["tileGrass2", "tileGrass1", "tileGrass2", "tileGrass1", "tileGrass2", "tileGrass1", "tileGrass_transitionE", "tileSand2", "tileSand_roadNorth", "tileSand2", "tileSand1", "tileSand2", "tileSand_roadNorth", "tileSand1", "tileSand2"]
   ]
 }
