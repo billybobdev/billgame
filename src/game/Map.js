@@ -14,6 +14,7 @@ class Map {
 
   loadMap(index) {
     this.tiles = maps[index].tiles;
+    this.objects = maps[index].objects;
   }
 
   draw() {
@@ -25,7 +26,12 @@ class Map {
       });
       x = 0;
       y += 64;
-    })
+    });
+
+
+    this.objects.forEach(obj => {
+      this.atlas.drawImage(obj.sprite, obj.x, obj.y);
+    });
   }
 }
 

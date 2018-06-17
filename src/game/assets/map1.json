@@ -9,5 +9,17 @@
     ["tileGrass1", "tileGrass2", "tileGrass1", "tileGrass_roadNorth", "tileGrass2", "tileGrass1", "tileGrass_transitionE", "tileSand2", "tileSand_roadNorth", "tileSand2", "tileSand1", "tileSand_roadCornerUR", "tileSand_roadCrossing", "tileSand_roadEast", "tileSand_roadEast"],
     ["tileGrass_roadEast", "tileGrass_roadEast", "tileGrass_roadEast", "tileGrass_roadCornerUL", "tileGrass1", "tileGrass2", "tileGrass_transitionE", "tileSand1", "tileSand_roadNorth", "tileSand2", "tileSand1", "tileSand2", "tileSand_roadNorth", "tileSand1", "tileSand2"],
     ["tileGrass2", "tileGrass1", "tileGrass2", "tileGrass1", "tileGrass2", "tileGrass1", "tileGrass_transitionE", "tileSand2", "tileSand_roadNorth", "tileSand2", "tileSand1", "tileSand2", "tileSand_roadNorth", "tileSand1", "tileSand2"]
+  ],
+  "objects": [
+    {
+      "x": 290,
+      "y": 370,
+      "sprite": "treeGreen_small"
+    },
+    {
+      "x": 250,
+      "y": 320,
+      "sprite": "treeGreen_large"
+    }
   ]
 }
