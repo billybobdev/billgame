@@ -4,6 +4,7 @@ class Tank {
 
   constructor(atlas) {
     this.atlas = atlas;
+    this.context = this.atlas.context;
 
     this.bodySprite = this.atlas.Atlas['tankBody_dark'];
     this.turretSprite = this.atlas.Atlas['tankDark_barrel1'];
@@ -55,23 +56,21 @@ class Tank {
   }
 
   draw() {
-    const context = this.atlas.context;
-
-    context.save();
-    context.translate(this.x, this.y);
-    context.translate(this.bodySprite.width / 2, this.bodySprite.height / 2);
-    context.rotate(Math.PI / 180 * ( this.orientation + 90 ));
+    this.context.save();
+    this.context.translate(this.x, this.y);
+    this.context.translate(this.bodySprite.width / 2, this.bodySprite.height / 2);
+    this.context.rotate(Math.PI / 180 * ( this.orientation + 90 ));
     this.atlas.drawImage('tankBody_dark', -this.bodySprite.width / 2, -this.bodySprite.height / 2);
 
-    context.restore();
-    context.save();
+    this.context.restore();
+    this.context.save();
 
-    context.translate(this.x, this.y);
-    context.translate(this.bodySprite.width / 2, this.bodySprite.height / 2);
-    context.rotate(Math.PI / 180 * this.turretAngle);
+    this.context.translate(this.x, this.y);
+    this.context.translate(this.bodySprite.width / 2, this.bodySprite.height / 2);
+    this.context.rotate(Math.PI / 180 * this.turretAngle);
     this.atlas.drawImage('tankDark_barrel1', -this.turretSprite.width / 2, -this.turretSprite.height + 6);
 
-    context.restore();
+    this.context.restore();
   }
 }
 
