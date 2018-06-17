@@ -1,11 +1,19 @@
+
+const maps = [
+  require('./assets/map1.json'),
+  //require('./assets/map2.json')
+];
+
 class Map {
 
   constructor(atlas) {
     this.atlas = atlas;
 
-    const map = require('./assets/map1.json');
+    this.loadMap(0);
+  }
 
-    this.tiles = map.tiles;
+  loadMap(index) {
+    this.tiles = maps[index].tiles;
   }
 
   draw() {
