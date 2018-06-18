@@ -5,6 +5,9 @@ class Point {
     this.y = parseInt(y);
   }
 
+  angleTo(point) {
+    return Math.atan2(point.y - this.y, point.x - this.x) * 180 / Math.PI;
+  }
 }
 
 class Rectangle extends Point {
