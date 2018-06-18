@@ -1,5 +1,5 @@
 import MainLoop from 'mainloop.js';
-import { Point } from './Primatives';
+import { Vector2 } from './Primatives';
 import Input from './Input';
 import TextureAtlas from './TextureAtlas';
 import Map from './Map';
@@ -63,7 +63,7 @@ class Game {
 
       this.context.font = '16px serif';
 
-      const spriteName = this.atlas.findSpriteByPoint(new Point(Input.MouseState.x, Input.MouseState.y));
+      const spriteName = this.atlas.findSpriteByPoint(new Vector2(Input.MouseState.x, Input.MouseState.y));
 
       if (spriteName) {
         const texture = this.atlas.Atlas[spriteName];

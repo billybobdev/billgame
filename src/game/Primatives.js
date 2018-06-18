@@ -1,16 +1,16 @@
-class Point {
+class Vector2 {
 
   constructor(x, y) {
     this.x = parseInt(x);
     this.y = parseInt(y);
   }
 
-  angleTo(point) {
-    return Math.atan2(point.y - this.y, point.x - this.x) * 180 / Math.PI;
+  angleTo(vector) {
+    return Math.atan2(vector.y - this.y, vector.x - this.x) * 180 / Math.PI;
   }
 }
 
-class Rectangle extends Point {
+class Rectangle extends Vector2 {
 
   constructor(x, y, width, height) {
     super(x, y);
@@ -36,15 +36,15 @@ class Rectangle extends Point {
   }
 
   get center() {
-    return new Point(this.centerX, this.centerY);
+    return new Vector2(this.centerX, this.centerY);
   }
 
-  contains(point) {
-    return point.x >= this.x &&
-      point.x <= this.x + this.width &&
-      point.y >= this.y &&
-      point.y <= this.y + this.height;
+  contains(vector) {
+    return vector.x >= this.x &&
+      vector.x <= this.x + this.width &&
+      vector.y >= this.y &&
+      vector.y <= this.y + this.height;
   }
 }
 
-export { Point, Rectangle }
+export { Vector2, Rectangle }

@@ -28,7 +28,6 @@ class Map {
       y += 64;
     });
 
-
     this.objects.forEach(obj => {
       this.atlas.drawImage(obj.sprite, obj.x, obj.y);
     });

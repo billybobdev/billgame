@@ -1,5 +1,5 @@
 import Input from './Input';
-import { Point } from './Primatives';
+import { Vector2 } from './Primatives';
 
 class Tank {
 
@@ -10,7 +10,7 @@ class Tank {
     this.bodySprite = this.atlas.Atlas['tankBody_dark'];
     this.turretSprite = this.atlas.Atlas['tankDark_barrel1'];
 
-    this.position = new Point(200, 200);
+    this.position = new Vector2(200, 200);
     this.orientation = 0;
     this.turnSpeed = .2;
     this.moveSpeed = .1;
@@ -46,12 +46,12 @@ class Tank {
       this.turretAngle -= this.turnSpeed * delta;
     }
 
-    const center = new Point(
+    const center = new Vector2(
       this.position.x + this.bodySprite.width / 2,
       this.position.y + this.bodySprite.height / 2
     );
 
-    this.turretAngle = center.angleTo(new Point(Input.mouseState.x, Input.mouseState.y)) + 90;
+    this.turretAngle = center.angleTo(new Vector2(Input.mouseState.x, Input.mouseState.y)) + 90;
   }
 
   update(delta) {
