@@ -1,12 +1,54 @@
 class Vector2 {
 
   constructor(x, y) {
-    this.x = parseInt(x);
-    this.y = parseInt(y);
+    this.x = parseFloat(x);
+    this.y = parseFloat(y);
+  }
+
+  get direction() {
+    return Math.atan2(this.y, this.x);
+  }
+
+  get magnitude() {
+    return Math.sqrt(this.x * this.x + this.y * this.y);
+  }
+
+  get length() {
+    return this.magnitude;
   }
 
   angleTo(vector) {
-    return Math.atan2(vector.y - this.y, vector.x - this.x) * 180 / Math.PI;
+    return Math.atan2(vector.y - this.y, vector.x - this.x);
+  }
+
+  degreesTo(vector) {
+    return this.angleTo(vector) * 180 / Math.PI;
+  }
+
+  add(vector) {
+    this.x += vector.x;
+    this.y += vector.y;
+
+    return this;
+  }
+
+  toString() {
+    return this.x + ',' + this.y;
+  }
+
+  toArray() {
+    return [this.x, this.y];
+  }
+
+  clone() {
+    return new Vector2(this.x, this.y);
+  }
+
+  copy(vector) {
+    this.x = vector.x;
+    this.y = vector.y;
+
+    return this;
   }
 }
 
@@ -37,6 +79,12 @@ class Rectangle extends Vector2 {
 
   get center() {
     return new Vector2(this.centerX, this.centerY);
+  }
+
+  strokeRect(context) {
+    context.save();
+    context.strokeRect(this.x, this.y, this.width, this.height);
+    context.restore();
   }
 
   contains(vector) {

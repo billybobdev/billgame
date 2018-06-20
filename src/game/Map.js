@@ -1,3 +1,4 @@
+import { Rectangle } from './Primatives';
 
 const maps = [
   require('./assets/map1.json'),
@@ -15,6 +16,10 @@ class Map {
   loadMap(index) {
     this.tiles = maps[index].tiles;
     this.objects = maps[index].objects;
+  }
+
+  get bounds() {
+    return new Rectangle(0, 0, 64 * this.tiles[0].length, 64 * this.tiles.length);
   }
 
   draw() {

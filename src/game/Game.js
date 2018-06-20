@@ -4,6 +4,7 @@ import Input from './Input';
 import TextureAtlas from './TextureAtlas';
 import Map from './Map';
 import Tank from './Tank';
+import Bullet from './Bullet';
 
 class Game {
 
@@ -20,7 +21,13 @@ class Game {
 
     this.map = new Map(this.atlas);
 
+    this.projectiles = [];
+
     this.tank = new Tank(this.atlas);
+
+    this.tank.on('fire', (origin, angle) => {
+      this.projectiles.push(new Bullet(this.atlas, 'specialBarrel3_outline', origin, angle));
+    });
 
     this.mainLoop = MainLoop;
 
@@ -43,6 +50,8 @@ class Game {
 
   update(delta) {
     if (!this.testMode) {
+      this.projectiles.forEach(bullet => bullet.update(delta));
+      this.projectiles = this.projectiles.filter(bullet => this.map.bounds.contains(bullet.bounds));
       this.tank.update(delta);
     }
   }
@@ -53,6 +62,7 @@ class Game {
     if (!this.testMode) {
       this.map.draw();
       this.tank.draw();
+      this.projectiles.forEach(bullet => bullet.draw());
     } else {
       this.context.font = '40px serif';
       this.context.fillText('Test Mode', this.canvas.width / 2, 60);

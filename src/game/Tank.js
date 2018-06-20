@@ -1,9 +1,11 @@
+import { EventEmitter } from 'events';
 import Input from './Input';
 import { Vector2, Rectangle } from './Primatives';
 
-class Tank {
+class Tank extends EventEmitter {
 
   constructor(atlas) {
+    super();
     this.atlas = atlas;
     this.context = this.atlas.context;
 
@@ -20,12 +22,10 @@ class Tank {
   begin(timestamp, delta) {
     if (Input.IsDown('KeyA')) {
       this.orientation -= this.turnSpeed * delta;
-      this.turretAngle -= this.turnSpeed * delta;
     }
 
     if (Input.IsDown('KeyD')){
       this.orientation += this.turnSpeed * delta;
-      this.turretAngle += this.turnSpeed * delta;
     }
 
     if (Input.IsDown('KeyW')) {
@@ -38,6 +38,10 @@ class Tank {
       this.position.y -= this.moveSpeed * Math.sin(this.orientation * Math.PI / 180) * delta;
     }
 
+    if (Input.IsPressed('Space')) {
+      this.emit('fire', this.position.center, this.turretAngle);
+    }
+
     if (Input.IsDown('ArrowRight')) {
       this.turretAngle += this.turnSpeed * delta;
     }
@@ -46,7 +50,7 @@ class Tank {
       this.turretAngle -= this.turnSpeed * delta;
     }
 
-    this.turretAngle = this.position.center.angleTo(new Vector2(Input.mouseState.x, Input.mouseState.y)) + 90;
+    this.turretAngle = this.position.center.angleTo(new Vector2(Input.mouseState.x, Input.mouseState.y));
   }
 
   update(delta) {
@@ -62,7 +66,7 @@ class Tank {
     this.context.save();
 
     this.context.translate(this.position.centerX, this.position.centerY);
-    this.context.rotate(Math.PI / 180 * this.turretAngle);
+    this.context.rotate(this.turretAngle + Math.PI / 180 * 90);
     this.atlas.drawImage('tankDark_barrel1', -this.turretSprite.width / 2, -this.turretSprite.height + 6);
 
     this.context.restore();
