@@ -19,6 +19,10 @@ class Tank extends EventEmitter {
     this.turretAngle = 90;
   }
 
+  get bounds() {
+    return this.position;
+  }
+
   begin(timestamp, delta) {
     if (Input.IsDown('KeyA')) {
       this.orientation -= this.turnSpeed * delta;

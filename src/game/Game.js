@@ -13,6 +13,7 @@ class Game {
     this.canvas = context.canvas;
 
     this.testMode = false;
+    this.debugMode = false;
 
     window.addEventListener('resize', this.resizeCanvas.bind(this), false);
     this.resizeCanvas();
@@ -45,6 +46,10 @@ class Game {
       this.testMode = !this.testMode;
     }
 
+    if (Input.IsPressed('F2')) {
+      this.debugMode = !this.debugMode;
+    }
+
     Input.begin(timestamp, delta);
   }
 
@@ -62,7 +67,16 @@ class Game {
     if (!this.testMode) {
       this.map.draw();
       this.tank.draw();
-      this.projectiles.forEach(bullet => bullet.draw());
+
+      if (this.debugMode)
+        this.tank.bounds.strokeRect(this.context);
+
+      this.projectiles.forEach(bullet => {
+        bullet.draw();
+
+        if (this.debugMode)
+          bullet.bounds.strokeRect(this.context);
+      });
     } else {
       this.context.font = '40px serif';
       this.context.fillText('Test Mode', this.canvas.width / 2, 60);

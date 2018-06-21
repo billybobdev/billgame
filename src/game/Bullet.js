@@ -27,7 +27,6 @@ class Bullet {
     this.atlas.context.rotate(this.angle + Math.PI / 180 * 90);
     this.atlas.drawImage(this.spriteName, -6, -50);
     this.atlas.context.restore();
-    this.bounds.strokeRect(this.atlas.context);
   }
 }
 
