@@ -3,7 +3,8 @@ import { Vector2 } from './Primatives';
 import Input from './Input';
 import TextureAtlas from './TextureAtlas';
 import Map from './Map';
-import Tank from './Tank';
+import Player from './Player';
+import Bot from './Bot';
 import Bullet from './Bullet';
 
 class Game {
@@ -24,9 +25,11 @@ class Game {
 
     this.projectiles = [];
 
-    this.tank = new Tank(this.atlas);
+    this.player = new Player(this.atlas);
 
-    this.tank.on('fire', (origin, angle) => {
+    this.bot = new Bot(this.atlas, new Vector2(64 * 12 + 14, 200));
+
+    this.player.on('fire', (origin, angle) => {
       this.projectiles.push(new Bullet(this.atlas, 'specialBarrel3_outline', origin, angle));
     });
 
@@ -40,7 +43,7 @@ class Game {
   }
 
   begin(timestamp, delta) {
-    this.tank.begin(timestamp, delta);
+    this.player.begin(timestamp, delta);
 
     if (Input.IsPressed('F1')) {
       this.testMode = !this.testMode;
@@ -57,7 +60,8 @@ class Game {
     if (!this.testMode) {
       this.projectiles.forEach(bullet => bullet.update(delta));
       this.projectiles = this.projectiles.filter(bullet => this.map.bounds.contains(bullet.bounds));
-      this.tank.update(delta);
+      this.bot.update(delta);
+      this.player.update(delta);
     }
   }
 
@@ -66,10 +70,13 @@ class Game {
 
     if (!this.testMode) {
       this.map.draw();
-      this.tank.draw();
+      this.bot.draw();
+      this.player.draw();
 
-      if (this.debugMode)
-        this.tank.bounds.strokeRect(this.context);
+      if (this.debugMode) {
+        this.bot.bounds.strokeRect(this.context);
+        this.player.bounds.strokeRect(this.context);
+      }
 
       this.projectiles.forEach(bullet => {
         bullet.draw();
