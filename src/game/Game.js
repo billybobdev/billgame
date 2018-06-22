@@ -15,6 +15,7 @@ class Game {
 
     this.testMode = false;
     this.debugMode = true;
+    this.fps = 0;
 
     window.addEventListener('resize', this.resizeCanvas.bind(this), false);
     this.resizeCanvas();
@@ -86,12 +87,12 @@ class Game {
       });
 
       if (this.debugMode) {
-        this.context.font = '16px monospace';
-        this.context.fillText('Debug [F2]', this.map.bounds.width + 20, 20);
+        this.context.font = '12px monospace';
+        this.context.fillText('Debug ' + this.fps + 'fps [F2]', this.map.bounds.width + 20, 20);
         this.context.fillText('Player: ' + this.player.position, this.map.bounds.width + 20, 40);
-        this.context.fillText('        ' + this.player.position, this.map.bounds.width + 20, 60);
+        this.context.fillText('Bot:    ' + this.bot.position, this.map.bounds.width + 20, 60);
 
-        this.context.fillText('Projectiles: [' + this.projectiles.length + ']', this.map.bounds.width + 20, 80);
+        this.context.fillText('' + this.projectiles.length + ' Projectiles', this.map.bounds.width + 20, 80);
 
         for (let i = 0; i < this.projectiles.length; i++) {
           this.context.fillText("  Bullet: " + this.projectiles[i].bounds, this.map.bounds.width + 20, 100 + (20 * i));
@@ -119,6 +120,7 @@ class Game {
   }
 
   end(fps, panic) {
+    this.fps = Math.round(fps);
   }
 
   resizeCanvas() {
