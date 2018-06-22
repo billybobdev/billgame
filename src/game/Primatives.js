@@ -33,7 +33,7 @@ class Vector2 {
   }
 
   toString() {
-    return this.x + ',' + this.y;
+    return Math.round(this.x * 100) / 100 + ',' + Math.round(this.y * 100) / 100;
   }
 
   toArray() {
@@ -54,11 +54,14 @@ class Vector2 {
 
 class Rectangle extends Vector2 {
 
-  constructor(x, y, width, height) {
+  constructor(x, y, width, height, angle) {
     super(x, y);
 
-    this.width = parseInt(width);
-    this.height = parseInt(height);
+    angle = angle || 0;
+
+    this.width = parseFloat(width);
+    this.height = parseFloat(height);
+    this.angle = parseFloat(angle);
   }
 
   get right() {
@@ -83,7 +86,9 @@ class Rectangle extends Vector2 {
 
   strokeRect(context) {
     context.save();
-    context.strokeRect(this.x, this.y, this.width, this.height);
+    context.translate(this.centerX, this.centerY);
+    context.rotate(this.angle);
+    context.strokeRect(-this.width / 2, -this.height / 2, this.width, this.height);
     context.restore();
   }
 

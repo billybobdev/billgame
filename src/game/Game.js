@@ -14,7 +14,7 @@ class Game {
     this.canvas = context.canvas;
 
     this.testMode = false;
-    this.debugMode = false;
+    this.debugMode = true;
 
     window.addEventListener('resize', this.resizeCanvas.bind(this), false);
     this.resizeCanvas();
@@ -84,6 +84,20 @@ class Game {
         if (this.debugMode)
           bullet.bounds.strokeRect(this.context);
       });
+
+      if (this.debugMode) {
+        this.context.font = '16px monospace';
+        this.context.fillText('Debug [F2]', this.map.bounds.width + 20, 20);
+        this.context.fillText('Player: ' + this.player.position, this.map.bounds.width + 20, 40);
+        this.context.fillText('        ' + this.player.position, this.map.bounds.width + 20, 60);
+
+        this.context.fillText('Projectiles: [' + this.projectiles.length + ']', this.map.bounds.width + 20, 80);
+
+        for (let i = 0; i < this.projectiles.length; i++) {
+          this.context.fillText("  Bullet: " + this.projectiles[i].bounds, this.map.bounds.width + 20, 100 + (20 * i));
+        }
+      }
+
     } else {
       this.context.font = '40px serif';
       this.context.fillText('Test Mode', this.canvas.width / 2, 60);

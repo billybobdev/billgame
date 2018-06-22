@@ -15,7 +15,6 @@ class Tank extends EventEmitter {
     this.turretSprite = this.atlas.Atlas['tankDark_barrel1'];
 
     this.position = new Rectangle(position.x, position.y, this.bodySprite.width, this.bodySprite.height);
-    this.orientation = 0;
     this.turnSpeed = .2;
     this.moveSpeed = .1;
     this.turretAngle = 90;
@@ -34,15 +33,15 @@ class Tank extends EventEmitter {
   draw() {
     this.context.save();
     this.context.translate(this.position.centerX, this.position.centerY);
-    this.context.rotate(Math.PI / 180 * ( this.orientation + 90 ));
+    this.context.rotate(this.position.angle - Math.PI / 180 * 90);
     this.atlas.drawImage('tankBody_dark', -this.bodySprite.width / 2, -this.bodySprite.height / 2);
 
     this.context.restore();
     this.context.save();
 
     this.context.translate(this.position.centerX, this.position.centerY);
-    this.context.rotate(this.turretAngle + Math.PI / 180 * 90);
-    this.atlas.drawImage('tankDark_barrel1', -this.turretSprite.width / 2, -this.turretSprite.height + 6);
+    this.context.rotate(this.turretAngle - Math.PI / 180 * 90);
+    this.atlas.drawImage('tankDark_barrel1', -this.turretSprite.width / 2, -4);
 
     this.context.restore();
   }

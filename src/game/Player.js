@@ -10,21 +10,21 @@ class Player extends Tank {
 
   begin(timestamp, delta) {
     if (Input.IsDown('KeyA')) {
-      this.orientation -= this.turnSpeed * delta;
+      this.position.angle -= Math.PI / 180 * 5;
     }
 
     if (Input.IsDown('KeyD')){
-      this.orientation += this.turnSpeed * delta;
+      this.position.angle += Math.PI / 180 * 5;
     }
 
     if (Input.IsDown('KeyW')) {
-      this.position.x += this.moveSpeed * Math.cos(this.orientation * Math.PI / 180) * delta;
-      this.position.y += this.moveSpeed * Math.sin(this.orientation * Math.PI / 180) * delta;
+      this.position.x += this.moveSpeed * Math.cos(this.position.angle) * delta;
+      this.position.y += this.moveSpeed * Math.sin(this.position.angle) * delta;
     }
 
     if (Input.IsDown('KeyS')) {
-      this.position.x -= this.moveSpeed * Math.cos(this.orientation * Math.PI / 180) * delta;
-      this.position.y -= this.moveSpeed * Math.sin(this.orientation * Math.PI / 180) * delta;
+      this.position.x -= this.moveSpeed * Math.cos(this.position.angle) * delta;
+      this.position.y -= this.moveSpeed * Math.sin(this.position.angle) * delta;
     }
 
     if (Input.IsPressed('Space')) {
